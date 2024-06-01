@@ -1,6 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
+import { redirect } from 'react-router-dom';
 
-function Login() {
+function Login({ onLogin }) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post('http://localhost:8000/api/login', {
+        email,
+        password
+      });
+      const { firstname } = response.data;
+      onLogin(firstname);
+      alert('Login successful');
+      setName(firstname);
+      redirect('/')
+    } catch (error) {
+      console.error('There was an error logging in!', error);
+      alert('Login failed');
+    }
+  };
+
   return (
     <div className="header">
       {/* Header section starts */}
@@ -52,12 +77,12 @@ function Login() {
             </div>
             <ul>
               <li><a href="#">saved <i className="far fa-heart"></i></a></li>
-              <li><a href="#">account <i className="fas fa-angle-down"></i></a>
+              { name == '' ? <li><a href="#">account <i className="fas fa-angle-down"></i></a>
                 <ul>
                   <li><a href="login">login</a></li>
                   <li><a href="register">register</a></li>
                 </ul>
-              </li>
+              </li> : <h1> {name} </h1>}
             </ul>
           </section>
         </nav>
@@ -66,10 +91,10 @@ function Login() {
       
       {/* Login section starts */}
       <section className="form-container">
-        <form action="" method="post">
+        <form onSubmit={handleSubmit}>
           <h3>welcome back!</h3>
-          <input type="email" name="email" required maxLength="50" placeholder="enter your email" className="box" />
-          <input type="password" name="pass" required maxLength="20" placeholder="enter your password" className="box" />
+          <input type="email" name="email" required maxLength="50" placeholder="enter your email" className="box" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <input type="password" name="pass" required maxLength="20" placeholder="enter your password" className="box" value={password} onChange={(e) => setPassword(e.target.value)} />
           <p>don't have an account? <a href="register">register new</a></p>
           <input type="submit" value="login now" name="submit" className="btn" />
         </form>

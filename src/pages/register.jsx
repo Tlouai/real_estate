@@ -1,6 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 
 function Register() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    pass: '',
+    c_pass: ''
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (formData.pass !== formData.c_pass) {
+      alert('Passwords do not match');
+      return;
+    }
+
+    try {
+      const response = await axios.post('http://localhost:8000/api/accounts', {
+        firstname: formData.name,
+        email: formData.email,
+        password: formData.pass
+      });
+      console.log(response.data);
+      alert('Registration successful');
+    } catch (error) {
+      console.error('There was an error creating the account!', error);
+      alert('Registration failed');
+    }
+  };
+
   return (
     <div className="home">
       {/* header section starts */}
@@ -91,12 +129,12 @@ function Register() {
 
       {/* register section starts */}
       <section className="form-container">
-        <form action="" method="post">
+        <form onSubmit={handleSubmit}>
           <h3>create an account!</h3>
-          <input type="tel" name="name" required maxLength="50" placeholder="enter your name" className="box" />
-          <input type="email" name="email" required maxLength="50" placeholder="enter your email" className="box" />
-          <input type="password" name="pass" required maxLength="20" placeholder="enter your password" className="box" />
-          <input type="password" name="c_pass" required maxLength="20" placeholder="confirm your password" className="box" />
+          <input type="tel" name="name" required maxLength="50" placeholder="enter your name" className="box" value={formData.name} onChange={handleChange} />
+          <input type="email" name="email" required maxLength="50" placeholder="enter your email" className="box" value={formData.email} onChange={handleChange} />
+          <input type="password" name="pass" required maxLength="20" placeholder="enter your password" className="box" value={formData.pass} onChange={handleChange} />
+          <input type="password" name="c_pass" required maxLength="20" placeholder="confirm your password" className="box" value={formData.c_pass} onChange={handleChange} />
           <p>already have an account? <a href="login">register now</a></p>
           <input type="submit" value="register now" name="submit" className="btn" />
         </form>
