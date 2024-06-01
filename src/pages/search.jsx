@@ -7,7 +7,7 @@ function Search() {
       <header className="header">
         <nav className="navbar nav-1">
           <section className="flex">
-            <a href="home.html" className="logo">
+            <a href="/" className="logo">
               <i className="fas fa-house"></i>MyHome
             </a>
             <ul>
@@ -62,9 +62,9 @@ function Search() {
                     help<i className="fas fa-angle-down"></i>
                   </a>
                   <ul>
-                    <li><a href="about.html">about us</a></li>
-                    <li><a href="contact.html">contact us</a></li>
-                    <li><a href="about.html#faq">FAQ</a></li>
+                    <li><a href="about">about us</a></li>
+                    <li><a href="contact">contact us</a></li>
+                    <li><a href="about#faq">FAQ</a></li>
                   </ul>
                 </li>
               </ul>
@@ -81,8 +81,8 @@ function Search() {
                   account<i className="fas fa-angle-down"></i>
                 </a>
                 <ul>
-                  <li><a href="login.html">login</a></li>
-                  <li><a href="registration.html">register</a></li>
+                  <li><a href="login">login</a></li>
+                  <li><a href="registration">register</a></li>
                 </ul>
               </li>
             </ul>
@@ -93,7 +93,7 @@ function Search() {
 
       <div className="home">
         <section className="center">
-          <form action="search.html" method="post">
+          <form action="search" method="post">
             <h3>find your perfect home</h3>
             <div className="box">
               <p>
@@ -273,7 +273,7 @@ function Search() {
                 <i className="fas fa-maximize"></i><span>750sq</span>
               </p>
             </div>
-            <a href="view_property.html" className="btn">view property</a>
+            <a href="view_property" className="btn">view property</a>
           </div>
 
           <div className="box">
@@ -311,7 +311,7 @@ function Search() {
                 <i className="fas fa-maximize"></i><span>750sq</span>
               </p>
             </div>
-            <a href="view_property.html" className="btn">view property</a>
+            <a href="view_property" className="btn">view property</a>
           </div>
 
           <div className="box">
@@ -349,12 +349,12 @@ function Search() {
                 <i className="fas fa-maximize"></i><span>750sq</span>
               </p>
             </div>
-            <a href="view_property.html" className="btn">view property</a>
+            <a href="view_property" className="btn">view property</a>
           </div>
         </div>
 
         <div style={{ marginTop: "2rem", textAlign: "center" }}>
-          <a href="listings.html" className="inline-btn">view all</a>
+          <a href="listings" className="inline-btn">view all</a>
         </div>
       </section>
 
@@ -376,10 +376,10 @@ function Search() {
           </div>
 
           <div className="box">
-            <a href="home.html"><span>home</span></a>
-            <a href="about.html"><span>about</span></a>
-            <a href="contact.html"><span>contact</span></a>
-            <a href="listings.html"><span>listings</span></a>
+            <a href="/"><span>home</span></a>
+            <a href="about"><span>about</span></a>
+            <a href="contact"><span>contact</span></a>
+            <a href="listings"><span>listings</span></a>
             <a href="#"><span>saved properties</span></a>
           </div>
 

@@ -6,7 +6,7 @@ function ViewProperty() {
       <header className="header">
         <nav className="navbar nav-1">
           <section className="flex">
-            <a href="home.html" className="logo"><i className="fas fa-house"></i>MyHome</a>
+            <a href="/" className="logo"><i className="fas fa-house"></i>MyHome</a>
             <ul>
               <li><a href="#">post property<i className="fas fa-paper-plane"></i></a></li>
             </ul>
@@ -46,9 +46,9 @@ function ViewProperty() {
 
                 <li><a href="#">Help<i className="fas fa-angle-down"></i></a>
                   <ul>
-                    <li><a href="about.html">about us</a></li>
-                    <li><a href="contact.html">contact us</a></li>
-                    <li><a href="about.html#faq">FAQ</a></li>
+                    <li><a href="about">about us</a></li>
+                    <li><a href="contact">contact us</a></li>
+                    <li><a href="about#faq">FAQ</a></li>
                   </ul>
                 </li>
               </ul>
@@ -58,8 +58,8 @@ function ViewProperty() {
               <li><a href="#">Saved <i className="far fa-heart"></i></a></li>
               <li><a href="#">Account<i className="fas fa-angle-down"></i></a>
                 <ul>
-                  <li><a href="login.html">Login</a></li>
-                  <li><a href="register.html">Register</a></li>
+                  <li><a href="login">Login</a></li>
+                  <li><a href="register">Register</a></li>
                 </ul>
               </li>
             </ul>

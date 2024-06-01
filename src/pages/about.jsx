@@ -7,7 +7,7 @@ function About() {
       <header className="header">
         <nav className="navbar nav-1">
           <section className="flex">
-            <a href="home.html" className="logo"><i className="fas fa-house"></i>MyHome</a>
+            <a href="/" className="logo"><i className="fas fa-house"></i>MyHome</a>
             <ul>
               <li><a href="#">post property <i className="fas fa-paper-plane"></i></a></li>
             </ul>
@@ -48,9 +48,9 @@ function About() {
                 <li>
                   <a href="#">help <i className="fas fa-angle-down"></i></a>
                   <ul>
-                    <li><a href="about.html">about us</a></li>
-                    <li><a href="contact.html">contact us</a></li>
-                    <li><a href="about.html#faq">FAQ</a></li>
+                    <li><a href="about">about us</a></li>
+                    <li><a href="contact">contact us</a></li>
+                    <li><a href="about#faq">FAQ</a></li>
                   </ul>
                 </li>
               </ul>
@@ -61,8 +61,8 @@ function About() {
               <li>
                 <a href="#">account<i className="fas fa-angle-down"></i></a>
                 <ul>
-                  <li><a href="login.html">login</a></li>
-                  <li><a href="registeration.html">login</a></li>
+                  <li><a href="login">login</a></li>
+                  <li><a href="registeration">login</a></li>
                 </ul>
               </li>
             </ul>

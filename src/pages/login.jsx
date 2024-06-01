@@ -7,7 +7,7 @@ function Login() {
       <header className="header">
         <nav className="navbar nav-1">
           <section className="flex">
-            <a href="home.html" className="logo"><i className="fas fa-house"></i>MyHome</a>
+            <a href="/" className="logo"><i className="fas fa-house"></i>MyHome</a>
             <ul>
               <li><a href="#">post property<i className="fas fa-paper-plane"></i></a></li>
             </ul>
@@ -43,9 +43,9 @@ function Login() {
                 </li>
                 <li><a href="#">help<i className="fas fa-angle-down"></i></a>
                   <ul>
-                    <li><a href="about.html">about us</a></li>
-                    <li><a href="contact.html">contact us</a></li>
-                    <li><a href="contact.html#faq">FAQ</a></li>
+                    <li><a href="about">about us</a></li>
+                    <li><a href="contact">contact us</a></li>
+                    <li><a href="contact#faq">FAQ</a></li>
                   </ul>
                 </li>
               </ul>
@@ -86,10 +86,10 @@ function Login() {
             <a href="#"><i className="fas fa-map-marker-alt"></i><span>mumbai, india - 400104</span></a>
           </div>
           <div className="box">
-            <a href="home.html"><span>home</span></a>
-            <a href="about.html"><span>about</span></a>
-            <a href="contact.html"><span>contact</span></a>
-            <a href="listings.html"><span>all listings</span></a>
+            <a href="home"><span>home</span></a>
+            <a href="about"><span>about</span></a>
+            <a href="contact"><span>contact</span></a>
+            <a href="listings"><span>all listings</span></a>
             <a href="#"><span>saved properties</span></a>
           </div>
           <div className="box">

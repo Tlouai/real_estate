@@ -43,9 +43,9 @@ function Home() {
                   </li>
                   <li><a href="#">help<i className="fas fa-angle-down"></i></a>
                     <ul>
-                      <li><a href="about.html">about us</a></li>
-                      <li><a href="contact.html">contact us</a></li>
-                      <li><a href="about.html#faq">FAQ</a></li>
+                      <li><a href="about">about us</a></li>
+                      <li><a href="contact">contact us</a></li>
+                      <li><a href="about#faq">FAQ</a></li>
                     </ul>
                   </li>
                 </ul>
@@ -67,7 +67,7 @@ function Home() {
       
       <div className="home">
         <section className="center">
-          <form action="search.html" method="post">
+          <form action="search" method="post">
             <h3>find your perfect home</h3>
             <div className="box">
               <p>enter location <span>*</span></p>

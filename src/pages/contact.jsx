@@ -21,7 +21,7 @@ function Contact() {
       <header className="header">
         <nav className="navbar nav-1">
           <section className="flex">
-            <a href="home.html" className="logo">
+            <a href="/" className="logo">
               <i className="fas fa-house"></i>MyHome
             </a>
             <ul>
@@ -70,9 +70,9 @@ function Contact() {
                     help<i className="fas fa-angle-down"></i>
                   </a>
                   <ul>
-                    <li><a href="about.html">about us</a></li>
-                    <li><a href="contact.html">contact us</a></li>
-                    <li><a href="contact.html#faq">FAQ</a></li>
+                    <li><a href="about">about us</a></li>
+                    <li><a href="contact">contact us</a></li>
+                    <li><a href="contact#faq">FAQ</a></li>
                   </ul>
                 </li>
               </ul>
@@ -86,8 +86,8 @@ function Contact() {
                   account <i className="fas fa-angle-down"></i>
                 </a>
                 <ul>
-                  <li><a href="login.html">login</a></li>
-                  <li><a href="register.html">register</a></li>
+                  <li><a href="login">login</a></li>
+                  <li><a href="register">register</a></li>
                 </ul>
               </li>
             </ul>
@@ -252,7 +252,7 @@ function Contact() {
                 <i className="fas fa-maximize"></i><span>750sqft</span>
               </p>
             </div>
-            <a href="view_property.html" className="btn">view property</a>
+            <a href="view_property" className="btn">view property</a>
           </div>
           <div className="box">
             <div className="admin">
@@ -289,7 +289,7 @@ function Contact() {
                 <i className="fas fa-maximize"></i><span>750sqft</span>
               </p>
             </div>
-            <a href="view_property.html" className="btn">view property</a>
+            <a href="view_property" className="btn">view property</a>
           </div>
           <div className="box">
             <div className="admin">
@@ -326,7 +326,7 @@ function Contact() {
                 <i className="fas fa-maximize"></i><span>750sqft</span>
               </p>
             </div>
-            <a href="view_property.html" className="btn">view property</a>
+            <a href="view_property" className="btn">view property</a>
           </div>
         </div>
       </section>
@@ -350,10 +350,10 @@ function Contact() {
             </a>
           </div>
           <div className="box">
-            <a href="home.html"><span>home</span></a>
-            <a href="about.html"><span>about</span></a>
-            <a href="contact.html"><span>contact</span></a>
-            <a href="listings.html"><span>all listings</span></a>
+            <a href="/"><span>home</span></a>
+            <a href="about"><span>about</span></a>
+            <a href="contact"><span>contact</span></a>
+            <a href="listings"><span>all listings</span></a>
             <a href="#"><span>saved properties</span></a>
           </div>
           <div className="box">
