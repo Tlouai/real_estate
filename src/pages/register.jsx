@@ -100,7 +100,7 @@ function Register() {
                   </a>
                   <ul>
                     <li><a href="about">about us</a></li>
-                    <li><a href="contact">contact us</a></li>
+                    <li><a href="contact">Search</a></li>
                     <li><a href="contact#faq">FAQ</a></li>
                   </ul>
                 </li>
@@ -108,7 +108,7 @@ function Register() {
             </div>
             <ul>
               <li>
-                <a href="#">
+                <a href="likes">
                   saved <i className="far fa-heart"></i>
                 </a>
               </li>
@@ -156,7 +156,7 @@ function Register() {
             <a href="about"><span>about</span></a>
             <a href="contact"><span>contact</span></a>
             <a href="listings"><span>all listings</span></a>
-            <a href="#"><span>saved properties</span></a>
+            <a href="likes"><span>saved properties</span></a>
           </div>
 
           <div className="box">

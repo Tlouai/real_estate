@@ -1,6 +1,28 @@
 import React from 'react';
+import { useUserContext } from './usercontext';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import SearchBar from './search_box';
+import PropertyCard from './property_card';
+
 
 function Home() {
+  const { state , dispatch } = useUserContext();
+  const [properties, setProperties] = useState([]);
+
+  const [searchResults, setSearchResults] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:8000/api/posts')
+      .then(response => {
+        setProperties(response.data);
+        console.log(state.user.firstname)
+      })
+      .catch(error => {
+        console.error('There was an error fetching the properties!', error);
+      });
+  }, []);
+
   return (
     <>
       <div className="header">
@@ -44,21 +66,29 @@ function Home() {
                   <li><a href="#">help<i className="fas fa-angle-down"></i></a>
                     <ul>
                       <li><a href="about">about us</a></li>
-                      <li><a href="contact">contact us</a></li>
+                      <li><a href="contact">Search</a></li>
                       <li><a href="about#faq">FAQ</a></li>
                     </ul>
                   </li>
                 </ul>
               </div>
               <ul>
-                <li><a href="#">saved <i className="far fa-heart"></i></a></li>
-                <li><a href="#">account<i className="fas fa-angle-down"></i></a>
-                  <ul>
-                    <li><a href="login">login</a></li>
-                    <li><a href="register">login</a></li>
-                  </ul>
-                </li>
-              </ul>
+              <li>
+                <a href="likes">saved <i className="far fa-heart"></i></a>
+              </li>
+              <li>
+              {state.user.firstname == null ?
+                <div>
+                <a href="#">
+                  account <i className="fas fa-angle-down"></i>
+                </a>
+                <ul>
+                  <li><a href="login">login</a></li>
+                  <li><a href="register">register</a></li>
+                </ul>
+                </div> : <a href="/">{ state.user.firstname }<i className="far fa-heart"></i></a>}
+              </li>
+            </ul>
             </section>
           </nav>
         </header>
@@ -66,61 +96,48 @@ function Home() {
       </div>
       
       <div className="home">
-        <section className="center">
-          <form action="search" method="post">
-            <h3>find your perfect home</h3>
-            <div className="box">
-              <p>enter location <span>*</span></p>
-              <input type="text" name="location" required maxLength="50" placeholder="enter city name" className="input" />
-            </div>
-            <div className="flex">
-              <div className="box">
-                <p>property type <span>*</span></p>
-                <select name="type" className="input" required>
-                  <option value="flat">flat</option>
-                  <option value="house">house</option>
-                  <option value="shop">shop</option>
-                </select>
-              </div>
-              <div className="box">
-                <p>how many BHK <span>*</span></p>
-                <select name="bhk" className="input" required>
-                  <option value="1">1 BHK</option>
-                  <option value="2">2 BHK</option>
-                  <option value="3">3 BHK</option>
-                  <option value="4">4 BHK</option>
-                  <option value="5">5 BHK</option>
-                  <option value="6">6 BHK</option>
-                  <option value="7">7 BHK</option>
-                  <option value="8">8 BHK</option>
-                  <option value="9">9 BHK</option>
-                </select>
-              </div>
-              <div className="box">
-                <p>minimum budget <span>*</span></p>
-                <select name="minimum" className="input" required>
-                  <option value="5000000">5 lac</option>
-                  <option value="1000000">10 lac</option>
-                  <option value="2000000">20 lac</option>
-                  <option value="3000000">30 lac</option>
-                  <option value="4000000">40 lac</option>
-                  {/* Add more options */}
-                </select>
-              </div>
-              <div className="box">
-                <p>maximum budget <span>*</span></p>
-                <select name="maximum" className="input" required>
-                  <option value="5000000">5 lac</option>
-                  <option value="1000000">10 lac</option>
-                  <option value="2000000">20 lac</option>
-                  <option value="3000000">30 lac</option>
-                  <option value="4000000">40 lac</option>
-                  {/* Add more options */}
-                </select>
-              </div>
-            </div>
-            <input type="submit" value="search property" name="search" className="btn" />
-          </form>
+        <section className="listings">
+        <h1 className="heading">searched results</h1>
+
+        <SearchBar onSearchResults={setSearchResults} />
+        <div className="box-container">
+        {searchResults.length > 0 ? searchResults.map(property => (
+          <PropertyCard key={property.id} property={{
+            id: property.id,
+            initial: property.name.charAt(0).toUpperCase(),
+            name: property.name,
+            date: property.created_at, // This can be replaced with actual data
+            totalImages: 4, // This can be replaced with actual data
+            type: property.name, // This can be replaced with actual data
+            saleType: property.sell_or_rent,
+            image: property.pictures, // This can be replaced with actual data
+            propertyName: property.name,
+            location: property.address, // This can be replaced with actual data
+            bedrooms: 3, // This can be replaced with actual data
+            bathrooms: 2, // This can be replaced with actual data
+            area: property.size // This can be replaced with actual data
+          }} />
+        )) : properties.map(property => (
+          <PropertyCard key={property.id} property={{
+            initial: property.name.charAt(0).toUpperCase(),
+            id: property.id,
+
+            name: property.name,
+            date: property.created_at, // This can be replaced with actual data
+            totalImages: 4, // This can be replaced with actual data
+            type: property.name, // This can be replaced with actual data
+            saleType: property.sell_or_rent,
+            image: property.pictures, // This can be replaced with actual data
+            propertyName: property.name,
+            location: property.address, // This can be replaced with actual data
+            bedrooms: 3, // This can be replaced with actual data
+            bathrooms: 2, // This can be replaced with actual data
+            area: property.size // This can be replaced with actual data
+          }} />
+        ))}
+
+        
+          </div>
         </section>
       </div>
 

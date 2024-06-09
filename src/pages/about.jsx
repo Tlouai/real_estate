@@ -49,7 +49,7 @@ function About() {
                   <a href="#">help <i className="fas fa-angle-down"></i></a>
                   <ul>
                     <li><a href="about">about us</a></li>
-                    <li><a href="contact">contact us</a></li>
+                    <li><a href="contact">Search</a></li>
                     <li><a href="about#faq">FAQ</a></li>
                   </ul>
                 </li>
@@ -57,7 +57,7 @@ function About() {
             </div>
 
             <ul>
-              <li><a href="#">saved <i className="far fa-heart"></i></a></li>
+              <li><a href="likes">saved <i className="far fa-heart"></i></a></li>
               <li>
                 <a href="#">account<i className="fas fa-angle-down"></i></a>
                 <ul>

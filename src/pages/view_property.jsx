@@ -47,7 +47,7 @@ function ViewProperty() {
                 <li><a href="#">Help<i className="fas fa-angle-down"></i></a>
                   <ul>
                     <li><a href="about">about us</a></li>
-                    <li><a href="contact">contact us</a></li>
+                    <li><a href="contact">Search</a></li>
                     <li><a href="about#faq">FAQ</a></li>
                   </ul>
                 </li>
@@ -55,7 +55,7 @@ function ViewProperty() {
             </div>
 
             <ul>
-              <li><a href="#">Saved <i className="far fa-heart"></i></a></li>
+              <li><a href="likes">Saved <i className="far fa-heart"></i></a></li>
               <li><a href="#">Account<i className="fas fa-angle-down"></i></a>
                 <ul>
                   <li><a href="login">Login</a></li>

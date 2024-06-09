@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { redirect } from 'react-router-dom';
+import { useUserContext } from '../pages/usercontext';
 
 function Login({ onLogin }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
+  const { state , dispatch } = useUserContext();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,11 +17,10 @@ function Login({ onLogin }) {
         email,
         password
       });
-      const { firstname } = response.data;
-      onLogin(firstname);
+      const { id, firstname } = response.data;
+      dispatch({ type: 'SET_USER', payload: { id, firstname } });
+      console.log(state)
       alert('Login successful');
-      setName(firstname);
-      redirect('/')
     } catch (error) {
       console.error('There was an error logging in!', error);
       alert('Login failed');
@@ -69,20 +70,20 @@ function Login({ onLogin }) {
                 <li><a href="#">help<i className="fas fa-angle-down"></i></a>
                   <ul>
                     <li><a href="about">about us</a></li>
-                    <li><a href="contact">contact us</a></li>
+                    <li><a href="contact">Search</a></li>
                     <li><a href="contact#faq">FAQ</a></li>
                   </ul>
                 </li>
               </ul>
             </div>
             <ul>
-              <li><a href="#">saved <i className="far fa-heart"></i></a></li>
-              { name == '' ? <li><a href="#">account <i className="fas fa-angle-down"></i></a>
+              <li><a href="likes">saved <i className="far fa-heart"></i></a></li>
+              { state.user.firstname == null ? <li><a href="#">account <i className="fas fa-angle-down"></i></a>
                 <ul>
                   <li><a href="login">login</a></li>
                   <li><a href="register">register</a></li>
                 </ul>
-              </li> : <h1> {name} </h1>}
+              </li> : <h1> {state.user.firstname} </h1>}
             </ul>
           </section>
         </nav>
@@ -115,7 +116,7 @@ function Login({ onLogin }) {
             <a href="about"><span>about</span></a>
             <a href="contact"><span>contact</span></a>
             <a href="listings"><span>all listings</span></a>
-            <a href="#"><span>saved properties</span></a>
+            <a href="likes"><span>saved properties</span></a>
           </div>
           <div className="box">
             <a href="#"><span>facebook</span><i className="fab fa-facebook-f"></i></a>
