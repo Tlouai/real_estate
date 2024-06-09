@@ -28,7 +28,7 @@ function Search() {
               <ul>
                 <li>
                   <a href="#">
-                    Buy<i className="fas fa-angle-down"></i>
+                    add<i className="fas fa-angle-down"></i>
                   </a>
                   <ul>
                     <li><a href="#">house</a></li>
@@ -40,21 +40,11 @@ function Search() {
                 </li>
                 <li>
                   <a href="#">
-                    sell<i className="fas fa-angle-down"></i>
+                    post property<i className="fas fa-angle-down"></i>
                   </a>
                   <ul>
                     <li><a href="#">post property</a></li>
                     <li><a href="#">post dashboard</a></li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="#">
-                    rent<i className="fas fa-angle-down"></i>
-                  </a>
-                  <ul>
-                    <li><a href="#">house</a></li>
-                    <li><a href="#">flat</a></li>
-                    <li><a href="#">shop</a></li>
                   </ul>
                 </li>
                 <li>
@@ -65,6 +55,16 @@ function Search() {
                     <li><a href="about">about us</a></li>
                     <li><a href="contact">Search</a></li>
                     <li><a href="about#faq">FAQ</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#">
+                    all listings<i className="fas fa-angle-down"></i>
+                  </a>
+                  <ul>
+                    <li><a href="#">house</a></li>
+                    <li><a href="#">flat</a></li>
+                    <li><a href="#">shop</a></li>
                   </ul>
                 </li>
               </ul>
@@ -385,7 +385,7 @@ function Search() {
               <span>facebook</span><i className="fab fa-facebook-f"></i>
             </a>
             <a href="#">
-              <span>twitter</span><i className="fab fa-twitter"></i>
+              <span>twitter</span><i class="fab fa-twitter"></i>
             </a>
             <a href="#">
               <span>linkedin</span><i className="fab fa-linkedin"></i>

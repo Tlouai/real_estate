@@ -21,7 +21,7 @@ function About() {
             <div className="menu">
               <ul>
                 <li>
-                  <a href="#">Buy <i className="fas fa-angle-down"></i></a>
+                  <a href="#">add <i className="fas fa-angle-down"></i></a>
                   <ul>
                     <li><a href="#">house</a></li>
                     <li><a href="#">flat</a></li>
@@ -31,18 +31,10 @@ function About() {
                   </ul>
                 </li>
                 <li>
-                  <a href="#">sell <i className="fas fa-angle-down"></i></a>
+                  <a href="#">post property <i className="fas fa-angle-down"></i></a>
                   <ul>
                     <li><a href="#">post property</a></li>
                     <li><a href="#">post dashboard</a></li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="#">rent <i className="fas fa-angle-down"></i></a>
-                  <ul>
-                    <li><a href="#">house</a></li>
-                    <li><a href="#">flat</a></li>
-                    <li><a href="#">shop</a></li>
                   </ul>
                 </li>
                 <li>
@@ -53,16 +45,24 @@ function About() {
                     <li><a href="about#faq">FAQ</a></li>
                   </ul>
                 </li>
+                <li>
+                  <a href="#">all listings <i className="fas fa-angle-down"></i></a>
+                  <ul>
+                    <li><a href="#">house</a></li>
+                    <li><a href="#">flat</a></li>
+                    <li><a href="#">shop</a></li>
+                  </ul>
+                </li>
               </ul>
             </div>
 
             <ul>
               <li><a href="likes">saved <i className="far fa-heart"></i></a></li>
               <li>
-                <a href="#">account<i className="fas fa-angle-down"></i></a>
+                <a href="#">account <i className="fas fa-angle-down"></i></a>
                 <ul>
                   <li><a href="login">login</a></li>
-                  <li><a href="registeration">login</a></li>
+                  <li><a href="registeration">register</a></li>
                 </ul>
               </li>
             </ul>
@@ -86,7 +86,7 @@ function About() {
         <section className="flex">
           {/* Footer content */}
         </section>
-        <div className="credit">&copy; copyright @ 2024 by <span>Mr. Louai</span> | all right reserved!</div>
+        <div className="credit">&copy; copyright @ 2024 by <span>Mr. Louai</span> | all rights reserved!</div>
       </footer>
       {/* Footer section ends */}
     </div>

@@ -1,21 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import SearchBar from './search_box';
 import { useUserContext } from './usercontext';
-import PropertyCardLiked from './property_card liked';
-
-
+import PropertyCardLiked from './property_card_liked';
 
 function Search() {
-  const { state , dispatch } = useUserContext();
+  const { state, dispatch } = useUserContext();
   const [properties, setProperties] = useState([]);
   const [liked, setLiked] = useState(false);
+
   useEffect(() => {
     if (state.user) {
       axios.get(`http://localhost:8000/api/likeds?account_id=${state.user.id}`)
         .then(response => {
-          setProperties( response.data)
-          console.log(response.data)
+          setProperties(response.data);
+          console.log(response.data);
         })
         .catch(error => {
           console.error('There was an error fetching the liked properties!', error);
@@ -46,7 +43,7 @@ function Search() {
               <ul>
                 <li>
                   <a href="#">
-                    buy<i className="fas fa-angle-down"></i>
+                    add<i className="fas fa-angle-down"></i>
                   </a>
                   <ul>
                     <li><a href="#">house</a></li>
@@ -58,19 +55,11 @@ function Search() {
                 </li>
                 <li>
                   <a href="#">
-                    sell<i className="fas fa-angle-down"></i>
+                    post property<i className="fas fa-angle-down"></i>
                   </a>
                   <ul>
                     <li><a href="#">post property</a></li>
                     <li><a href="#">dashboard</a></li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="#">rent</a>
-                  <ul>
-                    <li><a href="#">house</a></li>
-                    <li><a href="#">flat</a></li>
-                    <li><a href="#">shop</a></li>
                   </ul>
                 </li>
                 <li>
@@ -83,6 +72,16 @@ function Search() {
                     <li><a href="contact#faq">FAQ</a></li>
                   </ul>
                 </li>
+                <li>
+                  <a href="#">
+                    all listings<i className="fas fa-angle-down"></i>
+                  </a>
+                  <ul>
+                    <li><a href="#">house</a></li>
+                    <li><a href="#">flat</a></li>
+                    <li><a href="#">shop</a></li>
+                  </ul>
+                </li>
               </ul>
             </div>
             <ul>
@@ -90,16 +89,16 @@ function Search() {
                 <a href="likes">saved <i className="far fa-heart"></i></a>
               </li>
               <li>
-              {state.user.firstname == null ?
-                <div>
-                <a href="#">
-                  account <i className="fas fa-angle-down"></i>
-                </a>
-                <ul>
-                  <li><a href="login">login</a></li>
-                  <li><a href="register">register</a></li>
-                </ul>
-                </div> : state.user.firstname}
+                {state.user.firstname == null ?
+                  <div>
+                    <a href="#">
+                      account <i className="fas fa-angle-down"></i>
+                    </a>
+                    <ul>
+                      <li><a href="login">login</a></li>
+                      <li><a href="register">register</a></li>
+                    </ul>
+                  </div> : state.user.firstname}
               </li>
             </ul>
           </section>
@@ -117,44 +116,42 @@ function Search() {
         <h1 className="heading">saved results</h1>
 
         <div className="box-container">
-        {properties.length > 0 ? properties.map(property => (
-          <PropertyCardLiked key={property.property.id} property={{
-            liked: true,
-            id: property.property.id,
-            initial: '',
-            name: property.property.name,
-            date: property.property.created_at, // This can be replaced with actual data
-            totalImages: 4, // This can be replaced with actual data
-            type: property.property.name, // This can be replaced with actual data
-            saleType: property.property.sell_or_rent,
-            image: property.property.pictures, // This can be replaced with actual data
-            propertyName: property.property.name,
-            location: property.property.address, // This can be replaced with actual data
-            bedrooms: 3, // This can be replaced with actual data
-            bathrooms: 2, // This can be replaced with actual data
-            area: property.property.size // This can be replaced with actual data
-          }} />
-        )) : properties.map(property => (
-          <PropertyCardLiked key={property.id} property={{
-            liked: true,
-            id: property.property.id,
-            initial: '',
-            name: property.property.name,
-            date: property.property.created_at, // This can be replaced with actual data
-            totalImages: 4, // This can be replaced with actual data
-            type: property.property.name, // This can be replaced with actual data
-            saleType: property.property.sell_or_rent,
-            image: property.property.pictures, // This can be replaced with actual data
-            propertyName: property.property.name,
-            location: property.property.address, // This can be replaced with actual data
-            bedrooms: 3, // This can be replaced with actual data
-            bathrooms: 2, // This can be replaced with actual data
-            area: property.property.size// This can be replaced with actual data
-          }} />
-        ))}
-
-        
-          </div>
+          {properties.length > 0 ? properties.map(property => (
+            <PropertyCardLiked key={property.property.id} property={{
+              liked: true,
+              id: property.property.id,
+              initial: '',
+              name: property.property.name,
+              date: property.property.created_at, // This can be replaced with actual data
+              totalImages: 4, // This can be replaced with actual data
+              type: property.property.name, // This can be replaced with actual data
+              saleType: property.property.sell_or_rent,
+              image: property.property.pictures, // This can be replaced with actual data
+              propertyName: property.property.name,
+              location: property.property.address, // This can be replaced with actual data
+              bedrooms: 3, // This can be replaced with actual data
+              bathrooms: 2, // This can be replaced with actual data
+              area: property.property.size // This can be replaced with actual data
+            }} />
+          )) : properties.map(property => (
+            <PropertyCardLiked key={property.id} property={{
+              liked: true,
+              id: property.property.id,
+              initial: '',
+              name: property.property.name,
+              date: property.property.created_at, // This can be replaced with actual data
+              totalImages: 4, // This can be replaced with actual data
+              type: property.property.name, // This can be replaced with actual data
+              saleType: property.property.sell_or_rent,
+              image: property.property.pictures, // This can be replaced with actual data
+              propertyName: property.property.name,
+              location: property.property.address, // This can be replaced with actual data
+              bedrooms: 3, // This can be replaced with actual data
+              bathrooms: 2, // This can be replaced with actual data
+              area: property.property.size // This can be replaced with actual data
+            }} />
+          ))}
+        </div>
       </section>
       {/* listings section ends */}
 

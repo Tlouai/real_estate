@@ -4,20 +4,16 @@ import axios from 'axios';
 import SearchBar from './search_box';
 import { useUserContext } from './usercontext';
 
-
-
 function Contact() {
-  const { state , dispatch } = useUserContext();
+  const { state, dispatch } = useUserContext();
   const [properties, setProperties] = useState([]);
-
-
   const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
     axios.get('http://localhost:8000/api/posts')
       .then(response => {
         setProperties(response.data);
-        console.log(state.user.firstname)
+        console.log(state.user.firstname);
       })
       .catch(error => {
         console.error('There was an error fetching the properties!', error);
@@ -47,7 +43,7 @@ function Contact() {
               <ul>
                 <li>
                   <a href="#">
-                    buy<i className="fas fa-angle-down"></i>
+                    add<i className="fas fa-angle-down"></i>
                   </a>
                   <ul>
                     <li><a href="#">house</a></li>
@@ -59,19 +55,11 @@ function Contact() {
                 </li>
                 <li>
                   <a href="#">
-                    sell<i className="fas fa-angle-down"></i>
+                    post property<i className="fas fa-angle-down"></i>
                   </a>
                   <ul>
                     <li><a href="#">post property</a></li>
-                    <li><a href="#">dashboard</a></li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="#">rent</a>
-                  <ul>
-                    <li><a href="#">house</a></li>
-                    <li><a href="#">flat</a></li>
-                    <li><a href="#">shop</a></li>
+                    <li><a href="#">post dashboard</a></li>
                   </ul>
                 </li>
                 <li>
@@ -84,6 +72,16 @@ function Contact() {
                     <li><a href="contact#faq">FAQ</a></li>
                   </ul>
                 </li>
+                <li>
+                  <a href="#">
+                    all listings<i className="fas fa-angle-down"></i>
+                  </a>
+                  <ul>
+                    <li><a href="#">house</a></li>
+                    <li><a href="#">flat</a></li>
+                    <li><a href="#">shop</a></li>
+                  </ul>
+                </li>
               </ul>
             </div>
             <ul>
@@ -91,16 +89,16 @@ function Contact() {
                 <a href="likes">saved <i className="far fa-heart"></i></a>
               </li>
               <li>
-              {state.user.firstname == null ?
-                <div>
-                <a href="#">
-                  account <i className="fas fa-angle-down"></i>
-                </a>
-                <ul>
-                  <li><a href="login">login</a></li>
-                  <li><a href="register">register</a></li>
-                </ul>
-                </div> : <a href="/">{ state.user.firstname }<i className="far fa-heart"></i></a>}
+                {state.user.firstname == null ?
+                  <div>
+                    <a href="#">
+                      account <i className="fas fa-angle-down"></i>
+                    </a>
+                    <ul>
+                      <li><a href="login">login</a></li>
+                      <li><a href="register">register</a></li>
+                    </ul>
+                  </div> : <a href="/">{state.user.firstname}<i className="far fa-heart"></i></a>}
               </li>
             </ul>
           </section>
@@ -119,43 +117,40 @@ function Contact() {
 
         <SearchBar onSearchResults={setSearchResults} />
         <div className="box-container">
-        {searchResults.length > 0 ? searchResults.map(property => (
-          <PropertyCard key={property.id} property={{
-            id: property.id,
-            initial: property.name.charAt(0).toUpperCase(),
-            name: property.name,
-            date: property.created_at, // This can be replaced with actual data
-            totalImages: 4, // This can be replaced with actual data
-            type: property.name, // This can be replaced with actual data
-            saleType: property.sell_or_rent,
-            image: property.pictures, // This can be replaced with actual data
-            propertyName: property.name,
-            location: property.address, // This can be replaced with actual data
-            bedrooms: 3, // This can be replaced with actual data
-            bathrooms: 2, // This can be replaced with actual data
-            area: property.size // This can be replaced with actual data
-          }} />
-        )) : properties.map(property => (
-          <PropertyCard key={property.id} property={{
-            initial: property.name.charAt(0).toUpperCase(),
-            id: property.id,
-
-            name: property.name,
-            date: property.created_at, // This can be replaced with actual data
-            totalImages: 4, // This can be replaced with actual data
-            type: property.name, // This can be replaced with actual data
-            saleType: property.sell_or_rent,
-            image: property.pictures, // This can be replaced with actual data
-            propertyName: property.name,
-            location: property.address, // This can be replaced with actual data
-            bedrooms: 3, // This can be replaced with actual data
-            bathrooms: 2, // This can be replaced with actual data
-            area: property.size // This can be replaced with actual data
-          }} />
-        ))}
-
-        
-          </div>
+          {searchResults.length > 0 ? searchResults.map(property => (
+            <PropertyCard key={property.id} property={{
+              id: property.id,
+              initial: property.name.charAt(0).toUpperCase(),
+              name: property.name,
+              date: property.created_at, // This can be replaced with actual data
+              totalImages: 4, // This can be replaced with actual data
+              type: property.name, // This can be replaced with actual data
+              saleType: property.sell_or_rent,
+              image: property.pictures, // This can be replaced with actual data
+              propertyName: property.name,
+              location: property.address, // This can be replaced with actual data
+              bedrooms: 3, // This can be replaced with actual data
+              bathrooms: 2, // This can be replaced with actual data
+              area: property.size // This can be replaced with actual data
+            }} />
+          )) : properties.map(property => (
+            <PropertyCard key={property.id} property={{
+              initial: property.name.charAt(0).toUpperCase(),
+              id: property.id,
+              name: property.name,
+              date: property.created_at, // This can be replaced with actual data
+              totalImages: 4, // This can be replaced with actual data
+              type: property.name, // This can be replaced with actual data
+              saleType: property.sell_or_rent,
+              image: property.pictures, // This can be replaced with actual data
+              propertyName: property.name,
+              location: property.address, // This can be replaced with actual data
+              bedrooms: 3, // This can be replaced with actual data
+              bathrooms: 2, // This can be replaced with actual data
+              area: property.size // This can be replaced with actual data
+            }} />
+          ))}
+        </div>
       </section>
       {/* listings section ends */}
 

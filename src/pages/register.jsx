@@ -65,7 +65,7 @@ function Register() {
               <ul>
                 <li>
                   <a href="#">
-                    buy<i className="fas fa-angle-down"></i>
+                    add<i className="fas fa-angle-down"></i>
                   </a>
                   <ul>
                     <li><a href="#">house</a></li>
@@ -77,21 +77,11 @@ function Register() {
                 </li>
                 <li>
                   <a href="#">
-                    sell<i className="fas fa-angle-down"></i>
+                    post property<i className="fas fa-angle-down"></i>
                   </a>
                   <ul>
                     <li><a href="#">post property</a></li>
                     <li><a href="#">dashboard</a></li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="#">
-                    rent
-                  </a>
-                  <ul>
-                    <li><a href="#">house</a></li>
-                    <li><a href="#">flat</a></li>
-                    <li><a href="#">shop</a></li>
                   </ul>
                 </li>
                 <li>
@@ -102,6 +92,16 @@ function Register() {
                     <li><a href="about">about us</a></li>
                     <li><a href="contact">Search</a></li>
                     <li><a href="contact#faq">FAQ</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#">
+                    all listings<i className="fas fa-angle-down"></i>
+                  </a>
+                  <ul>
+                    <li><a href="#">house</a></li>
+                    <li><a href="#">flat</a></li>
+                    <li><a href="#">shop</a></li>
                   </ul>
                 </li>
               </ul>
@@ -169,9 +169,6 @@ function Register() {
         <div className="credit">&copy; copyright @ 2022 by <span>mr. web designer</span> | all rights reserved!</div>
       </footer>
       {/* footer section ends */}
-
-      {/* custom js file link */}
-      <script src="js/script.js"></script>
     </div>
   );
 }
