@@ -73,8 +73,6 @@ function Search() {
                   </a>
                   <ul>
                     <li><a href="about">about us</a></li>
-                    <li><a href="contact">Search</a></li>
-                    <li><a href="contact#faq">FAQ</a></li>
                   </ul>
                 </li>
                 <li>
