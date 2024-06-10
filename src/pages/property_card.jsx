@@ -56,7 +56,7 @@ const PropertyCard = ({ property }) => {
           <i className="fas fa-bath"></i><span>{property.bathrooms}</span>
         </p>
         <p>
-          <i className="fas fa-maximize"></i><span>{property.area}</span>
+          <i className="fas fa-maximize"></i><span>{property.area} sqft</span>
         </p>
       </div>
     </div>

@@ -21,6 +21,10 @@ function Home() {
       });
   }, []);
 
+  function logout() {
+    dispatch({ type: 'LOGOUT'});
+  }
+
   return (
     <>
       <div className="header">
@@ -30,7 +34,7 @@ function Home() {
             <section className="flex">
               <a href="/" className="logo"><i className="fas fa-house"></i>MyHome</a>
               <ul>
-                <li><a href="#">post property<i className="fas fa-paper-plane"></i></a></li>
+                <li><a href="post">post property<i className="fas fa-paper-plane"></i></a></li>
               </ul>
             </section>
           </nav>
@@ -39,7 +43,7 @@ function Home() {
               <div id="menu-btn" className="fas fa-bars"></div>
               <div className="menu">
                 <ul>
-                  <li><a href="#">add<i className="fas fa-angle-down"></i></a>
+                  <li>
                     <ul>
                       <li><a href="#">house</a></li>
                       <li><a href="#">flat</a></li>
@@ -48,10 +52,9 @@ function Home() {
                       <li><a href="#">furnished</a></li>
                     </ul>
                   </li>
-                  <li><a href="#">post property<i className="fas fa-angle-down"></i></a>
+                  <li><a href="post">post property<i className="fas fa-angle-down"></i></a>
                     <ul>
-                      <li><a href="#">post property</a></li>
-                      <li><a href="#">post dashboard</a></li>
+                      <li><a href="post">post property</a></li>
                     </ul>
                   </li>
                   <li><a href="#">help<i className="fas fa-angle-down"></i></a>
@@ -61,13 +64,12 @@ function Home() {
                       <li><a href="about#faq">FAQ</a></li>
                     </ul>
                   </li>
-                  <li><a href="#">all listings<i className="fas fa-angle-down"></i></a>
-                    <ul>
-                      <li><a href="#">house</a></li>
-                      <li><a href="#">flat</a></li>
-                      <li><a href="#">shop</a></li>
-                    </ul>
-                  </li>
+                  <li>
+                  <a href="#">all listings <i className="fas fa-angle-down"></i></a>
+                  <ul>
+                  <a href="/">all listings <i className="fas fa-angle-down"></i></a>
+                  </ul>
+                </li>
                 </ul>
               </div>
               <ul>
@@ -75,7 +77,7 @@ function Home() {
                   <a href="likes">saved <i className="far fa-heart"></i></a>
                 </li>
                 <li>
-                  {state.user.firstname == null ?
+                  {(state.user == null || state.user == undefined ) ?
                     <div>
                       <a href="#">
                         account <i className="fas fa-angle-down"></i>
@@ -86,6 +88,10 @@ function Home() {
                       </ul>
                     </div> : <a href="/">{state.user.firstname}<i className="far fa-heart"></i></a>}
                 </li>
+                {(state.user == null || state.user == undefined ) ||
+                <li>
+                  <a href="#" onClick={logout}>Logout <i className="far fa-heart"></i></a>
+                </li>}
               </ul>
             </section>
           </nav>

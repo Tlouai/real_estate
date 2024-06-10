@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useUserContext } from './usercontext';
-import PropertyCardLiked from './property_card_liked';
+import PropertyCardLiked from '../pages/property_card liked';
+import axios from 'axios';
+import { redirect } from 'react-router-dom';
 
 function Search() {
   const { state, dispatch } = useUserContext();
@@ -17,8 +19,15 @@ function Search() {
         .catch(error => {
           console.error('There was an error fetching the liked properties!', error);
         });
+    } else {
+      redirect('/')
     }
-  }, [state.user]);
+  }, []);
+
+  
+  function logout() {
+    dispatch({ type: 'LOGOUT'});
+  }
 
   return (
     <div className="header">
@@ -31,7 +40,7 @@ function Search() {
             </a>
             <ul>
               <li>
-                <a href="#">post property<i className="fas fa-paper-plane"></i></a>
+                <a href="post">post property<i className="fas fa-paper-plane"></i></a>
               </li>
             </ul>
           </section>
@@ -42,9 +51,6 @@ function Search() {
             <div className="menu">
               <ul>
                 <li>
-                  <a href="#">
-                    add<i className="fas fa-angle-down"></i>
-                  </a>
                   <ul>
                     <li><a href="#">house</a></li>
                     <li><a href="#">flat</a></li>
@@ -54,12 +60,11 @@ function Search() {
                   </ul>
                 </li>
                 <li>
-                  <a href="#">
+                  <a href="post">
                     post property<i className="fas fa-angle-down"></i>
                   </a>
                   <ul>
-                    <li><a href="#">post property</a></li>
-                    <li><a href="#">dashboard</a></li>
+                    <li><a href="post">post property</a></li>
                   </ul>
                 </li>
                 <li>
@@ -73,34 +78,34 @@ function Search() {
                   </ul>
                 </li>
                 <li>
-                  <a href="#">
-                    all listings<i className="fas fa-angle-down"></i>
-                  </a>
+                  <a href="#">all listings <i className="fas fa-angle-down"></i></a>
                   <ul>
-                    <li><a href="#">house</a></li>
-                    <li><a href="#">flat</a></li>
-                    <li><a href="#">shop</a></li>
+                  <a href="/">all listings <i className="fas fa-angle-down"></i></a>
                   </ul>
                 </li>
               </ul>
             </div>
             <ul>
-              <li>
-                <a href="likes">saved <i className="far fa-heart"></i></a>
-              </li>
-              <li>
-                {state.user.firstname == null ?
-                  <div>
-                    <a href="#">
-                      account <i className="fas fa-angle-down"></i>
-                    </a>
-                    <ul>
-                      <li><a href="login">login</a></li>
-                      <li><a href="register">register</a></li>
-                    </ul>
-                  </div> : state.user.firstname}
-              </li>
-            </ul>
+                <li>
+                  <a href="likes">saved <i className="far fa-heart"></i></a>
+                </li>
+                <li>
+                  {(state.user == null || state.user == undefined ) ?
+                    <div>
+                      <a href="#">
+                        account <i className="fas fa-angle-down"></i>
+                      </a>
+                      <ul>
+                        <li><a href="login">login</a></li>
+                        <li><a href="register">register</a></li>
+                      </ul>
+                    </div> : <a href="/">{state.user.firstname}<i className="far fa-heart"></i></a>}
+                </li>
+                {(state.user == null || state.user == undefined ) ||
+                <li>
+                  <a href="#" onClick={logout}>Logout <i className="far fa-heart"></i></a>
+                </li>}
+              </ul>
           </section>
         </nav>
       </header>

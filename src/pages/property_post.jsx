@@ -3,7 +3,7 @@ import { useUserContext } from '../pages/usercontext';
 import axios from 'axios';
 
 const PostProperty = () => {
-  const { state } = useUserContext();
+  const { state, dispatch } = useUserContext();
   const [property, setProperty] = useState({
     size: '',
     name: '',
@@ -21,6 +21,11 @@ const PostProperty = () => {
     });
   };
 
+  
+  function logout() {
+    dispatch({ type: 'LOGOUT'});
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!state.user) {
@@ -28,6 +33,7 @@ const PostProperty = () => {
       return;
     }
 
+    
     try {
       const response = await axios.post('http://localhost:8000/api/posts', {
         ...property,
@@ -47,7 +53,7 @@ const PostProperty = () => {
           <section className="flex">
             <a href="/" className="logo"><i className="fas fa-house"></i>MyHome</a>
             <ul>
-              <li><a href="#">post property<i className="fas fa-paper-plane"></i></a></li>
+              <li><a href="post">post property<i className="fas fa-paper-plane"></i></a></li>
             </ul>
           </section>
         </nav>
@@ -58,20 +64,9 @@ const PostProperty = () => {
             <div className="menu">
               <ul>
                 <li>
-                  <a href="#">add<i className="fas fa-angle-down"></i></a>
+                  <a href="post">post property<i className="fas fa-angle-down"></i></a>
                   <ul>
-                    <li><a href="#">house</a></li>
-                    <li><a href="#">flat</a></li>
-                    <li><a href="#">shop</a></li>
-                    <li><a href="#">ready to move</a></li>
-                    <li><a href="#">furnished</a></li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="#">post property<i className="fas fa-angle-down"></i></a>
-                  <ul>
-                    <li><a href="#">post property</a></li>
-                    <li><a href="#">dashboard</a></li>
+                    <li><a href="post">post property</a></li>
                   </ul>
                 </li>
                 <li>
@@ -83,25 +78,34 @@ const PostProperty = () => {
                   </ul>
                 </li>
                 <li>
-                  <a href="#">all listings<i className="fas fa-angle-down"></i></a>
+                  <a href="#">all listings <i className="fas fa-angle-down"></i></a>
                   <ul>
-                    <li><a href="#">house</a></li>
-                    <li><a href="#">flat</a></li>
-                    <li><a href="#">shop</a></li>
+                  <a href="/">all listings <i className="fas fa-angle-down"></i></a>
                   </ul>
                 </li>
               </ul>
             </div>
             <ul>
-              <li><a href="likes">saved <i className="far fa-heart"></i></a></li>
-              { state.user.firstname == null ? 
-                <li><a href="#">account <i className="fas fa-angle-down"></i></a>
-                  <ul>
-                    <li><a href="login">login</a></li>
-                    <li><a href="register">register</a></li>
-                  </ul>
-                </li> : <h1>{state.user.firstname}</h1>}
-            </ul>
+                <li>
+                  <a href="likes">saved <i className="far fa-heart"></i></a>
+                </li>
+                <li>
+                  {(state.user == null || state.user == undefined ) ?
+                    <div>
+                      <a href="#">
+                        account <i className="fas fa-angle-down"></i>
+                      </a>
+                      <ul>
+                        <li><a href="login">login</a></li>
+                        <li><a href="register">register</a></li>
+                      </ul>
+                    </div> : <a href="/">{state.user.firstname}<i className="far fa-heart"></i></a>}
+                </li>
+                {(state.user == null || state.user == undefined ) ||
+                <li>
+                  <a href="#" onClick={logout}>Logout <i className="far fa-heart"></i></a>
+                </li>}
+              </ul>
           </section>
         </nav>
       </header>

@@ -32,7 +32,6 @@ function ViewProperty() {
                 <li><a href="#">Sell<i className="fas fa-angle-down"></i></a>
                   <ul>
                     <li><a href="#">post property</a></li>
-                    <li><a href="#">post dashboard</a></li>
                   </ul>
                 </li>
                 

@@ -1,6 +1,13 @@
 import React from 'react';
+import { useUserContext } from './usercontext';
 
 function About() {
+
+  
+  function logout() {
+    dispatch({ type: 'LOGOUT'});
+  }
+  const { state, dispatch } = useUserContext();
   return (
     <div>
       {/* Header section starts here */}
@@ -9,7 +16,7 @@ function About() {
           <section className="flex">
             <a href="/" className="logo"><i className="fas fa-house"></i>MyHome</a>
             <ul>
-              <li><a href="#">post property <i className="fas fa-paper-plane"></i></a></li>
+              <li><a href="post">post property <i className="fas fa-paper-plane"></i></a></li>
             </ul>
           </section>
         </nav>
@@ -21,7 +28,6 @@ function About() {
             <div className="menu">
               <ul>
                 <li>
-                  <a href="#">add <i className="fas fa-angle-down"></i></a>
                   <ul>
                     <li><a href="#">house</a></li>
                     <li><a href="#">flat</a></li>
@@ -31,10 +37,9 @@ function About() {
                   </ul>
                 </li>
                 <li>
-                  <a href="#">post property <i className="fas fa-angle-down"></i></a>
+                  <a href="post">post property <i className="fas fa-angle-down"></i></a>
                   <ul>
-                    <li><a href="#">post property</a></li>
-                    <li><a href="#">post dashboard</a></li>
+                    <li><a href="post">post property</a></li>
                   </ul>
                 </li>
                 <li>
@@ -48,24 +53,33 @@ function About() {
                 <li>
                   <a href="#">all listings <i className="fas fa-angle-down"></i></a>
                   <ul>
-                    <li><a href="#">house</a></li>
-                    <li><a href="#">flat</a></li>
-                    <li><a href="#">shop</a></li>
+                  <a href="/">all listings <i className="fas fa-angle-down"></i></a>
                   </ul>
                 </li>
               </ul>
             </div>
 
             <ul>
-              <li><a href="likes">saved <i className="far fa-heart"></i></a></li>
-              <li>
-                <a href="#">account <i className="fas fa-angle-down"></i></a>
-                <ul>
-                  <li><a href="login">login</a></li>
-                  <li><a href="registeration">register</a></li>
-                </ul>
-              </li>
-            </ul>
+                <li>
+                  <a href="likes">saved <i className="far fa-heart"></i></a>
+                </li>
+                <li>
+                  {(state.user == null || state.user == undefined ) ?
+                    <div>
+                      <a href="#">
+                        account <i className="fas fa-angle-down"></i>
+                      </a>
+                      <ul>
+                        <li><a href="login">login</a></li>
+                        <li><a href="register">register</a></li>
+                      </ul>
+                    </div> : <a href="/">{state.user.firstname}<i className="far fa-heart"></i></a>}
+                </li>
+                {(state.user == null || state.user == undefined ) ||
+                <li>
+                  <a href="#" onClick={logout}>Logout <i className="far fa-heart"></i></a>
+                </li>}
+              </ul>
           </section>
         </nav>
       </header>

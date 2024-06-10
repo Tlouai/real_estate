@@ -3,10 +3,9 @@ import axios from 'axios';
 import { redirect } from 'react-router-dom';
 import { useUserContext } from '../pages/usercontext';
 
-function Login({ onLogin }) {
+function Login({ }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [name, setName] = useState('');
   const { state , dispatch } = useUserContext();
 
   const handleSubmit = async (e) => {
@@ -18,14 +17,21 @@ function Login({ onLogin }) {
         password
       });
       const { id, firstname } = response.data;
-      dispatch({ type: 'SET_USER', payload: { id, firstname } });
-      console.log(state)
       alert('Login successful');
+      await redirect('/')
+      dispatch({ type: 'SET_USER', payload: { id, firstname } });
+
     } catch (error) {
       console.error('There was an error logging in!', error);
-      alert('Login failed');
+      alert('Login Failed');
+      redirect('/')
     }
   };
+
+   
+  function logout() {
+    dispatch({ type: 'LOGOUT'});
+  }
 
   return (
     <div className="header">
@@ -35,7 +41,7 @@ function Login({ onLogin }) {
           <section className="flex">
             <a href="/" className="logo"><i className="fas fa-house"></i>MyHome</a>
             <ul>
-              <li><a href="#">post property<i className="fas fa-paper-plane"></i></a></li>
+              <li><a href="post">post property<i className="fas fa-paper-plane"></i></a></li>
             </ul>
           </section>
         </nav>
@@ -45,28 +51,6 @@ function Login({ onLogin }) {
             <div id="menu-btn" className="fas fa-bars"></div>
             <div className="menu">
               <ul>
-                <li><a href="#">buy<i className="fas fa-angle-down"></i></a>
-                  <ul>
-                    <li><a href="#">house</a></li>
-                    <li><a href="#">flat</a></li>
-                    <li><a href="#">shop</a></li>
-                    <li><a href="#">ready to move</a></li>
-                    <li><a href="#">furnished</a></li>
-                  </ul>
-                </li>
-                <li><a href="#">sell<i className="fas fa-angle-down"></i></a>
-                  <ul>
-                    <li><a href="#">post property</a></li>
-                    <li><a href="#">dashboard</a></li>
-                  </ul>
-                </li>
-                <li><a href="#">rent</a>
-                  <ul>
-                    <li><a href="#">house</a></li>
-                    <li><a href="#">flat</a></li>
-                    <li><a href="#">shop</a></li>
-                  </ul>
-                </li>
                 <li><a href="#">help<i className="fas fa-angle-down"></i></a>
                   <ul>
                     <li><a href="about">about us</a></li>
@@ -77,14 +61,26 @@ function Login({ onLogin }) {
               </ul>
             </div>
             <ul>
-              <li><a href="likes">saved <i className="far fa-heart"></i></a></li>
-              { state.user.firstname == null ? <li><a href="#">account <i className="fas fa-angle-down"></i></a>
-                <ul>
-                  <li><a href="login">login</a></li>
-                  <li><a href="register">register</a></li>
-                </ul>
-              </li> : <h1> {state.user.firstname} </h1>}
-            </ul>
+                <li>
+                  <a href="likes">saved <i className="far fa-heart"></i></a>
+                </li>
+                <li>
+                  {(state.user == null || state.user == undefined ) ?
+                    <div>
+                      <a href="#">
+                        account <i className="fas fa-angle-down"></i>
+                      </a>
+                      <ul>
+                        <li><a href="login">login</a></li>
+                        <li><a href="register">register</a></li>
+                      </ul>
+                    </div> : <a href="/">{state.user.firstname}<i className="far fa-heart"></i></a>}
+                </li>
+                {(state.user == null || state.user == undefined ) ||
+                <li>
+                  <a href="#" onClick={logout}>Logout <i className="far fa-heart"></i></a>
+                </li>}
+              </ul>
           </section>
         </nav>
       </header>

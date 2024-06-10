@@ -50,7 +50,7 @@ function Register() {
             </a>
             <ul>
               <li>
-                <a href="#">
+                <a href="post">
                   post property<i className="fas fa-paper-plane"></i>
                 </a>
               </li>
@@ -64,9 +64,6 @@ function Register() {
             <div className="menu">
               <ul>
                 <li>
-                  <a href="#">
-                    add<i className="fas fa-angle-down"></i>
-                  </a>
                   <ul>
                     <li><a href="#">house</a></li>
                     <li><a href="#">flat</a></li>
@@ -76,12 +73,11 @@ function Register() {
                   </ul>
                 </li>
                 <li>
-                  <a href="#">
+                  <a href="post">
                     post property<i className="fas fa-angle-down"></i>
                   </a>
                   <ul>
-                    <li><a href="#">post property</a></li>
-                    <li><a href="#">dashboard</a></li>
+                    <li><a href="post">post property</a></li>
                   </ul>
                 </li>
                 <li>

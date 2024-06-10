@@ -20,6 +20,11 @@ function Contact() {
       });
   }, []);
 
+  
+  function logout() {
+    dispatch({ type: 'LOGOUT'});
+  }
+
   return (
     <div className="header">
       {/* header section starts */}
@@ -31,7 +36,7 @@ function Contact() {
             </a>
             <ul>
               <li>
-                <a href="#">post property<i className="fas fa-paper-plane"></i></a>
+                <a href="post">post property<i className="fas fa-paper-plane"></i></a>
               </li>
             </ul>
           </section>
@@ -42,9 +47,6 @@ function Contact() {
             <div className="menu">
               <ul>
                 <li>
-                  <a href="#">
-                    add<i className="fas fa-angle-down"></i>
-                  </a>
                   <ul>
                     <li><a href="#">house</a></li>
                     <li><a href="#">flat</a></li>
@@ -54,12 +56,11 @@ function Contact() {
                   </ul>
                 </li>
                 <li>
-                  <a href="#">
+                  <a href="post">
                     post property<i className="fas fa-angle-down"></i>
                   </a>
                   <ul>
-                    <li><a href="#">post property</a></li>
-                    <li><a href="#">post dashboard</a></li>
+                    <li><a href="post">post property</a></li>
                   </ul>
                 </li>
                 <li>
@@ -73,34 +74,34 @@ function Contact() {
                   </ul>
                 </li>
                 <li>
-                  <a href="#">
-                    all listings<i className="fas fa-angle-down"></i>
-                  </a>
+                  <a href="#">all listings <i className="fas fa-angle-down"></i></a>
                   <ul>
-                    <li><a href="#">house</a></li>
-                    <li><a href="#">flat</a></li>
-                    <li><a href="#">shop</a></li>
+                  <a href="/">all listings <i className="fas fa-angle-down"></i></a>
                   </ul>
                 </li>
               </ul>
             </div>
             <ul>
-              <li>
-                <a href="likes">saved <i className="far fa-heart"></i></a>
-              </li>
-              <li>
-                {state.user.firstname == null ?
-                  <div>
-                    <a href="#">
-                      account <i className="fas fa-angle-down"></i>
-                    </a>
-                    <ul>
-                      <li><a href="login">login</a></li>
-                      <li><a href="register">register</a></li>
-                    </ul>
-                  </div> : <a href="/">{state.user.firstname}<i className="far fa-heart"></i></a>}
-              </li>
-            </ul>
+                <li>
+                  <a href="likes">saved <i className="far fa-heart"></i></a>
+                </li>
+                <li>
+                  {(state.user == null || state.user == undefined ) ?
+                    <div>
+                      <a href="#">
+                        account <i className="fas fa-angle-down"></i>
+                      </a>
+                      <ul>
+                        <li><a href="login">login</a></li>
+                        <li><a href="register">register</a></li>
+                      </ul>
+                    </div> : <a href="/">{state.user.firstname}<i className="far fa-heart"></i></a>}
+                </li>
+                {(state.user == null || state.user == undefined ) ||
+                <li>
+                  <a href="#" onClick={logout}>Logout <i className="far fa-heart"></i></a>
+                </li>}
+              </ul>
           </section>
         </nav>
       </header>
