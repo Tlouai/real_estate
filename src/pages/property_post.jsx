@@ -8,7 +8,7 @@ const PostProperty = () => {
     size: '',
     name: '',
     address: '',
-    image_url: '',
+    pictures: '',
     phone_number: '',
     sell_or_rent: 'sell' // Default value
   });
@@ -35,12 +35,14 @@ const PostProperty = () => {
 
     
     try {
+      console.log(property)
       const response = await axios.post('http://localhost:8000/api/posts', {
         ...property,
         account_id: state.user.id
       });
       alert('Property posted successfully');
     } catch (error) {
+      console.log(state.user.id)
       console.error('There was an error posting the property!', error);
       alert('Failed to post the property');
     }
@@ -144,12 +146,12 @@ const PostProperty = () => {
           />
           <input 
             type="text" 
-            name="image_url" 
+            name="pictures" 
             required 
-            maxLength="200" 
+            maxLength="1000" 
             placeholder="Enter image URL" 
             className="box" 
-            value={property.image_url} 
+            value={property.pictures} 
             onChange={handleChange} 
           />
           <input 
